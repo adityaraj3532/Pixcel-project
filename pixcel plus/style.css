@@ -1,0 +1,13 @@
+h1{
+    text-align: center;
+}
+#search-form{
+    margin-top: 40px;
+    text-align: center;
+    
+}
+#results{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+    gap: 18px;
+}
