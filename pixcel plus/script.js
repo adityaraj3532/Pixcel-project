@@ -2,24 +2,8 @@
 
 const form = document.getElementById("search-form");
 const input = document.getElementById("search-input");
+const status = document.getElementById("status");
 
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();       // stop the page from reloading
-//   const query = input.value;    // read what the user typed
-//   console.log("User searched:", query);
-// });
-
-// async function search(query) {
-//   const url =
-//     "https://commons.wikimedia.org/w/api.php?action=query&generator=search" +
-//     "&gsrsearch=" + encodeURIComponent(query) +
-//     "&gsrnamespace=6&gsrlimit=12&prop=imageinfo&iiprop=url&iiurlwidth=300&format=json&origin=*";
-
-//   const response = await fetch(url);          // 1. ask the API
-//   if (!response.ok) throw new Error(response.status); // 2. did it work?
-//   const data = await response.json();         // 3. read the JSON
-//   console.log(data);
-// }
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -35,6 +19,8 @@ form.addEventListener("submit", async (event) => {
   const data = await response.json();
 
   const items = Object.values(data.query.pages);
+  status.textContent = `Showing ${items.length} results for "${query}"`;
+
   render(items);                             // the function from block 3
 });
 
